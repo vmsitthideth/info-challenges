@@ -1,3 +1,37 @@
 @import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css);
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,300);
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,400,300);
+
+body {
+	font-family: 'Lato', "Helvetica Neue", sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	background-color: #E9EAEE;
+}
+
+svg {
+	height: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Raleway', "Helvetica Neue", Helvetica, sans-serif;
+}
+
+h2 {
+	font-color: #bc6026;
+}
+
+@media screen and (min-width: 768px) {
+	body {
+		font-size: 20px;
+	}
+
+	h2 {
+		text-align: center;
+		padding-bottom: 20px;
+	}
+	
+	svg {
+		height: 20px;
+	}
+}
