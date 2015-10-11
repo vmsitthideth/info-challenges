@@ -2,6 +2,12 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,300);
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,400,300);
 
+nav {
+	position: absolute;
+	left: 0px;
+	top:0px;
+	z-index: -1;
+}
 body {
 	font-family: 'Lato', "Helvetica Neue", sans-serif;
 	font-size: 16px;
