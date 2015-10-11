@@ -2,11 +2,14 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,300);
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,400,300);
 
-.navbar {
+nav {
+	position: absolute;
+	left: 0px;
+	top: 0px;
 	background-color: #181c22;
-	color: white;
 	font-size: 16px;
 	padding-left: 15px;
+	font-variant: small-caps;
 }
 
 img {
@@ -16,26 +19,25 @@ img {
     z-index: -1;
 }
 
-.navbar.small {
-    font-variant: small-caps;
-}
-
-ul.navbar {
+ul a {
+	color: white;
 	padding-left: 0.5em;
 	padding-right: 0.5em;
-}
-
-.navbar:hover {
-
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
 }
 
 .header {
 	padding-top: 3em;
 }
 
-.hidden-xs.container.headline {
+.headline {
+	font-style: italic;
+}
+
+.container .hidden-xs {
 	height: 1.5em;
-	padding-bottom: 1em;
+	margin-bottom: 1em;
 }
 
 body {
@@ -58,8 +60,13 @@ h2 {
 }
 
 @media screen and (min-width: 768px) {
-	.navbar {
+	nav {
 		background-color: rgba(24, 28, 34, 0.8);
+	}
+
+	ul a {
+		padding-left: 1.0em;
+		padding-right: 1.0em;
 	}
 
 	.header {
@@ -68,6 +75,13 @@ h2 {
 		color: white;
 		text-align: right;
 		min-height: 550px;
+	}
+
+	.headline {
+		font-size: 1.25em;
+		text-align: center;
+		margin-top: 3em;
+		margin-bottom: 3em;
 	}
 
 	body {
