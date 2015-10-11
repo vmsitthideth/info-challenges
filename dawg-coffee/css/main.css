@@ -40,6 +40,10 @@ ul a {
 	margin-bottom: 1em;
 }
 
+.col-md-4 {
+	text-align: center;
+}
+
 body {
 	font-family: 'Lato', "Helvetica Neue", sans-serif;
 	font-size: 16px;
