@@ -12,12 +12,6 @@ nav {
 	font-variant: small-caps;
 }
 
-img {
-	position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: -1;
-}
 
 nav ul a{
 	color: white;
@@ -37,6 +31,10 @@ nav a:hover {
 	padding-top: 3em;
 }
 
+#motto {
+	display: none;
+}
+
  /* Headline font to italics*/
 .headline {
 	font-style: italic;
@@ -46,10 +44,6 @@ nav a:hover {
 	height: 1.5em;
 	margin-bottom: 1em;
 	fill: #d87e28;
-}
-
-.row {
-	text-align: center;
 }
 
 body {
@@ -67,12 +61,21 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: 'Raleway', "Helvetica Neue", Helvetica, sans-serif;
 }
 
-h2 {
+ {
 	font-color: #bc6026;
 }
 
 .information {
 	background-color:  #dbdce3;
+	padding-bottom: 2em;
+}
+
+.information svg {
+	fill: #d87e28;
+}
+
+#location {
+	border-radius: 5px;
 }
 
 h3 {
@@ -104,6 +107,10 @@ h3 {
 		color: white;
 		text-align: right;
 		min-height: 550px;
+	}
+
+	#motto {
+		display: block;
 	}
 
 	.headline {
