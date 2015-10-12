@@ -99,6 +99,14 @@ h1, h2, h3, h4, h5, h6 {
 	color: #d87e28;
 }
 
+#foot {
+	border-top: 3px solid #d87e28;
+	background-color: #afb3c2;
+	font-size: 12px;
+	margin-top: 1em;
+	clear: both;
+}
+
 @media screen and (min-width: 768px) {
 	nav {
 		background-color: rgba(24, 28, 34, 0.8);
@@ -140,6 +148,10 @@ h1, h2, h3, h4, h5, h6 {
 	h2 {
 		text-align: center;
 		padding-bottom: 20px;
+	}
+
+	#foot .col-sm-9 {
+		text-align: right;
 	}
 }
 
