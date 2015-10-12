@@ -4,14 +4,14 @@ This folder contains your submission for the [responsive challenge](http://info3
 
 
 ##### 1. Did you receive any help from others (classmates, etc)? If so, please list who. #####
-> Answer goes here!
+> I asked for pointers on the correct tags to use and where to find html/css information from Isabella, Natasha, Meera, Brittney, and Daniel.
 
 ##### 2. Did you complete any advanced extensions to this challenge? If so, what? #####
-> Answer goes here!
+> I did not.
 
 ##### 3. Approximately how many hours did it take you to complete this challenge? #####
-> Answer goes here!
+> 20 hours
 
 ##### 4. Did you encounter any problems in this challenge we should warn students about in the future? How can we make the challenge better? #####
-> Answer goes here!
+>  I did not really know what svgs exactly were so finding the right code to use was difficult.  A better explaination about svgs and other potential odd effects, like things that the container class does, would've helped a lot.
 

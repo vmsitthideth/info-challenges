@@ -2,6 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,300);
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,400,300);
 
+/* Properties for navigation bar */
 nav {
 	position: absolute;
 	left: 0px;
@@ -21,12 +22,14 @@ nav ul a{
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 }
+
 nav a:hover {
 	text-decoration: none;
 	color: #d87e28;
 	fill: #d87e28;
 }
 
+/* Properties for Dawg Coffee header and headline*/
 .header {
 	padding-top: 3em;
 }
@@ -46,6 +49,7 @@ nav a:hover {
 	fill: #d87e28;
 }
 
+/* Default properties for body, svg, and headings */
 body {
 	font-family: 'Lato', "Helvetica Neue", sans-serif;
 	font-size: 16px;
@@ -61,7 +65,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: 'Raleway', "Helvetica Neue", Helvetica, sans-serif;
 }
 
-
+/* Specific class and id changes */
 .information {
 	background-color:  #dbdce3;
 	padding-bottom: 2em;
@@ -106,6 +110,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin-top: 1em;
 }
 
+/* Screens bigger than small (768px)*/
 @media screen and (min-width: 768px) {
 	nav {
 		background-color: rgba(24, 28, 34, 0.8);
@@ -120,7 +125,6 @@ h1, h2, h3, h4, h5, h6 {
 		background-image: url("../img/background-sm.jpg");
 		background-repeat: no-repeat;
 		background-size: cover;
-		height: 100%;
 		color: white;
 		text-align: right;
 		min-height: 550px;
@@ -156,6 +160,7 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
+/* Medium size screens*/
 	@media screen and (min-width: 992px) {
 		.header {
 			background-image: url("../img/background-md.jpg");
@@ -165,6 +170,7 @@ h1, h2, h3, h4, h5, h6 {
 		}
 	}
 
+/* Large size screens*/
 	@media screen and (min-width: 1200px) {
 		.header {
 			background-image: url("../img/background-lg.jpg");
