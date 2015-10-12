@@ -78,12 +78,26 @@ h1, h2, h3, h4, h5, h6 {
 #items h2 {
 	color: #d87e28;
 }
+
 #items dd{
 	font-style: italic;
 	padding-left: 1em;
 }
 
+#story {
+	background-color: #dbdce3;
+}
 
+#story img {
+	float: right;
+	max-height: 300px;
+	margin-left: 1em;
+	border-radius: 5px;
+}
+
+#story h2 {
+	color: #d87e28;
+}
 
 @media screen and (min-width: 768px) {
 	nav {
@@ -112,6 +126,11 @@ h1, h2, h3, h4, h5, h6 {
 		text-align: center;
 		margin-top: 3em;
 		margin-bottom: 3em;
+	}
+
+
+	#story img {
+		max-height: 400px;
 	}
 
 	body {
