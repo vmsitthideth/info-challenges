@@ -104,7 +104,6 @@ h1, h2, h3, h4, h5, h6 {
 	background-color: #afb3c2;
 	font-size: 12px;
 	margin-top: 1em;
-	clear: both;
 }
 
 @media screen and (min-width: 768px) {
@@ -120,6 +119,8 @@ h1, h2, h3, h4, h5, h6 {
 	.header {
 		background-image: url("../img/background-sm.jpg");
 		background-repeat: no-repeat;
+		background-size: cover;
+		height: 100%;
 		color: white;
 		text-align: right;
 		min-height: 550px;
