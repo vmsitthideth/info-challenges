@@ -37,13 +37,15 @@ nav a:hover {
 	padding-top: 3em;
 }
 
+ /* Headline font to italics*/
 .headline {
 	font-style: italic;
 }
 
-.container .hidden-xs {
+.headline svg {
 	height: 1.5em;
 	margin-bottom: 1em;
+	fill: #d87e28;
 }
 
 .row {
@@ -125,7 +127,7 @@ h3 {
 		.header {
 			background-image: url("../img/background-md.jpg");
 		}
-		.container {
+		h1 {
 			font-size: 4em;
 		}
 	}
