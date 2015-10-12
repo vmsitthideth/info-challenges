@@ -61,9 +61,6 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: 'Raleway', "Helvetica Neue", Helvetica, sans-serif;
 }
 
- {
-	font-color: #bc6026;
-}
 
 .information {
 	background-color:  #dbdce3;
@@ -78,16 +75,13 @@ h1, h2, h3, h4, h5, h6 {
 	border-radius: 5px;
 }
 
-h3 {
+#items h2 {
+	color: #d87e28;
+}
+#items dd{
 	font-style: italic;
-	right: 1em;
+	padding-left: 1em;
 }
-
-.container h4 img {
-	max-height: 300px;
-	margin-left: 1em;
-}
-
 
 
 
