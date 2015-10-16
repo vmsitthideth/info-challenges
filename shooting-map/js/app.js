@@ -12,24 +12,43 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 }).addTo(map);
 
 var loadData = function(data) {
+		var armed = L.layerGroup([]);
+		var unarmed = L.layerGroup([]);
 	for (var i = 0; i < data.length; i++) {
 		var lat = data[i].lat;
 		var lng = data[i].lng;
 
-if (data[i].armed == true) {
-var circle = L.circle([lat, lng], 500, {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5
-}).addTo(map);
-} else {
-	var circle = L.circle([lat, lng], 500, {
-    color: 'blue',
-    fillColor: '#03036D',
-    fillOpacity: 0.5
-}).addTo(map);
-}
-}
+		if (data[i].armed == true) {
+			var circle = L.circle([lat, lng], 500, {
+    		color: 'red',
+    		fillColor: '#f03',
+    		fillOpacity: 0.5
+			})
+			armed.addLayer(circle);
+			//console.log(armed)
+
+			//armed.addLayer(lat, lng);
+		} else {
+			var circle = L.circle([lat, lng], 500, {
+    		color: 'blue',
+    		fillColor: '#f03',
+    		fillOpacity: 0.5
+			})
+			unarmed.addLayer(circle);
+			//console.log(unarmed)
+
+			//unarmed.addLayer(lat,lng);
+		//unarmed.addTo(map);
+		}
+	}
+	var myLayerGroups = {
+		"Armed": armed,
+		"Unarmed": unarmed
+	};
+
+L.control.layers(null, myLayerGroups).addTo(map);
+
+
 /*var circle = L.circle([lat, lng], 500, {
     color: 'red',
     fillColor: '#f03',
