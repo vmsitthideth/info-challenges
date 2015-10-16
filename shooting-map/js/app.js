@@ -11,11 +11,35 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     accessToken: 'pk.eyJ1Ijoidm1zaXR0aGlkZXRoIiwiYSI6ImNpZnQzNGo2cTF1cmNsZmtydW9jcXgzM2kifQ.EEy4Ds0HBQKV1QITP9X1qA'
 }).addTo(map);
 
-var plotShooting = function(data) {
+var loadData = function(data) {
+	for (var i = 0; i < data.length; i++) {
+		var lat = data[i].lat;
+		var lng = data[i].lng;
+
+if (data[i].armed == true) {
+var circle = L.circle([lat, lng], 500, {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5
+}).addTo(map);
+} else {
+	var circle = L.circle([lat, lng], 500, {
+    color: 'blue',
+    fillColor: '#03036D',
+    fillOpacity: 0.5
+}).addTo(map);
+}
+}
+/*var circle = L.circle([lat, lng], 500, {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5
+}).addTo(map);
+}*/
 
 }
 
-$.getJSON('data/data.min.json').then(plotShooting());
+$.getJSON('data/data.min.json').then(loadData);
 
 /*var marker = L.marker([51.5, -0.09]).addTo(map);
 
@@ -39,3 +63,4 @@ var popup = L.popup()
     .setLatLng([51.5, -0.09])
     .setContent("I am a standalone popup.")
     .openOn(map);
+ */
