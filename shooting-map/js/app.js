@@ -17,7 +17,12 @@ var loadData = function(data) {
 	for (var i = 0; i < data.length; i++) {
 		var lat = data[i].lat;
 		var lng = data[i].lng;
+
 		var summary = data[i].summary;
+
+		if (summary == null) {
+			summary = 'No Detailed Summary';
+		}
 
 		if (data[i].armed == true) {
 			var circle = L.circle([lat, lng], 500, {
@@ -35,21 +40,13 @@ var loadData = function(data) {
 			unarmed.addLayer(circle);
 		}
 	}
+
 	var myLayerGroups = {
 		"Armed": armed,
 		"Unarmed": unarmed
 	};
 
 L.control.layers(null, myLayerGroups).addTo(map);
-
-
-/*var circle = L.circle([lat, lng], 500, {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5
-}).addTo(map);
-}*/
-
 }
 
 $.getJSON('data/data.min.json').then(loadData);
