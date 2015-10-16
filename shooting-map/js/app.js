@@ -2,7 +2,7 @@
 
 'use strict';
 
-var map = L.map('map-container').setView([51.505, -0.09], 13);
+var map = L.map('map-container').setView([40, -98], 4);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -11,7 +11,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     accessToken: 'pk.eyJ1Ijoidm1zaXR0aGlkZXRoIiwiYSI6ImNpZnQzNGo2cTF1cmNsZmtydW9jcXgzM2kifQ.EEy4Ds0HBQKV1QITP9X1qA'
 }).addTo(map);
 
-var marker = L.marker([51.5, -0.09]).addTo(map);
+/*var marker = L.marker([51.5, -0.09]).addTo(map);
 
 var circle = L.circle([51.508, -0.11], 500, {
     color: 'red',
@@ -34,7 +34,7 @@ var popup = L.popup()
     .setContent("I am a standalone popup.")
     .openOn(map);
 
-/* var plotShooting = function(data) {
+var plotShooting = function(data) {
 var marker = L.marker(data.setLatLng);
 }
 
