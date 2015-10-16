@@ -11,6 +11,12 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     accessToken: 'pk.eyJ1Ijoidm1zaXR0aGlkZXRoIiwiYSI6ImNpZnQzNGo2cTF1cmNsZmtydW9jcXgzM2kifQ.EEy4Ds0HBQKV1QITP9X1qA'
 }).addTo(map);
 
+var plotShooting = function(data) {
+
+}
+
+$.getJSON('data/data.min.json').then(plotShooting());
+
 /*var marker = L.marker([51.5, -0.09]).addTo(map);
 
 var circle = L.circle([51.508, -0.11], 500, {
@@ -33,9 +39,3 @@ var popup = L.popup()
     .setLatLng([51.5, -0.09])
     .setContent("I am a standalone popup.")
     .openOn(map);
-
-var plotShooting = function(data) {
-var marker = L.marker(data.setLatLng);
-}
-
-$.getJSON('data/data.min.json').then(); */
