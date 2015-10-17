@@ -2,3 +2,11 @@
 #map-container {
 	height: 600px;
 }
+
+#footer {
+	border-top: 3px solid #d87e28;
+	background-color: #0F4B82;
+	font-family: "Comic Sans MS";
+	font-size: 18px;
+	color: #61AFAF;
+}

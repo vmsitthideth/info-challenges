@@ -14,63 +14,42 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 var loadData = function(data) {
 		var armed = L.layerGroup([]);
 		var unarmed = L.layerGroup([]);
-	for (var i = 0; i < data.length; i++) {
-		var lat = data[i].lat;
-		var lng = data[i].lng;
+		var count = 0;
+		for (var i = 0; i < data.length; i++) {
+			var lat = data[i].lat;
+			var lng = data[i].lng;
+			var summary = data[i].summary;
 
-		var summary = data[i].summary;
+			if (summary == null) {
+				summary = 'No Detailed Summary';
+			}
 
-		if (summary == null) {
-			summary = 'No Detailed Summary';
+			if (data[i].outcome === 'Killed') {
+				count++;
+			}
+
+			if (data[i].armed == true) {
+				var circle = L.circle([lat, lng], 500, {
+	    		color: 'red',
+	    		fillColor: '#f03',
+	    		fillOpacity: 0.5
+				}).bindPopup(summary);
+				armed.addLayer(circle);
+			} else {
+				var circle = L.circle([lat, lng], 500, {
+	    		color: 'blue',
+	    		fillColor: '#060691',
+	    		fillOpacity: 0.5
+				}).bindPopup(summary);
+				unarmed.addLayer(circle);
+			}
 		}
 
-		if (data[i].armed == true) {
-			var circle = L.circle([lat, lng], 500, {
-    		color: 'red',
-    		fillColor: '#f03',
-    		fillOpacity: 0.5
-			}).bindPopup(summary);
-			armed.addLayer(circle);
-		} else {
-			var circle = L.circle([lat, lng], 500, {
-    		color: 'blue',
-    		fillColor: '#060691',
-    		fillOpacity: 0.5
-			}).bindPopup(summary);
-			unarmed.addLayer(circle);
-		}
-	}
-
-	var myLayerGroups = {
-		"Armed": armed,
-		"Unarmed": unarmed
-	};
+		var myLayerGroups = {
+			"Armed": armed,
+			"Unarmed": unarmed
+		};
 
 L.control.layers(null, myLayerGroups).addTo(map);
 }
-
 $.getJSON('data/data.min.json').then(loadData);
-
-/*var marker = L.marker([51.5, -0.09]).addTo(map);
-
-var circle = L.circle([51.508, -0.11], 500, {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5
-}).addTo(map);
-
-var polygon = L.polygon([
-    [51.509, -0.08],
-    [51.503, -0.06],
-    [51.51, -0.047]
-]).addTo(map);
-
-marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-circle.bindPopup("I am a circle.");
-polygon.bindPopup("I am a polygon.");
-
-var popup = L.popup()
-    .setLatLng([51.5, -0.09])
-    .setContent("I am a standalone popup.")
-    .openOn(map);
- */
