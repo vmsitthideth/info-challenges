@@ -27,7 +27,7 @@ var loadData = function(data) {
 			}
 
 			if (data[i].armed === true) {
-				circlePoint(armed, 'red', '#f03', lat, lng), summary;
+				circlePoint(armed, 'red', '#f03', lat, lng, summary);
 				armedCount++;
 			} else {
 				circlePoint(unarmed, 'blue', '#060691', lat, lng, summary);
@@ -38,6 +38,7 @@ var loadData = function(data) {
 				killCount++;
 			}
 		}
+
 		var notKillCount = data.length - killCount;
 
 		var armKilled = armedCount * 100;
@@ -61,14 +62,27 @@ var loadData = function(data) {
 		};
 
 
+map.on('layeradd', function() {
+     $('#killed').text("Hello world!");
+     $('#notkilled').text("Bye world!");
+ });
+
+map.on('layerremove', function() {
+	$('#killed').text(" ");
+	$('#notkilled').text(" ");
+});
+
 L.control.layers(null, myLayerGroups).addTo(map);
+
 }
+
 function circlePoint(group, color, fillcolor, lat, lng, summary) {
 				var circle = L.circle([lat, lng], 500, {
 	    		color: color,
 	    		fillColor: fillcolor,
 	    		fillOpacity: 0.5
 				}).bindPopup(summary);
+
 				group.addLayer(circle);
 }
 
