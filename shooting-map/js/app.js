@@ -14,7 +14,9 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 var loadData = function(data) {
 		var armed = L.layerGroup([]);
 		var unarmed = L.layerGroup([]);
-		var count = 0;
+		var killCount = 0;
+		var armedCount = 0;
+		var unarmedCount = 0;
 		for (var i = 0; i < data.length; i++) {
 			var lat = data[i].lat;
 			var lng = data[i].lng;
@@ -24,32 +26,50 @@ var loadData = function(data) {
 				summary = 'No Detailed Summary';
 			}
 
-			if (data[i].outcome === 'Killed') {
-				count++;
+			if (data[i].armed === true) {
+				circlePoint(armed, 'red', '#f03', lat, lng), summary;
+				armedCount++;
+			} else {
+				circlePoint(unarmed, 'blue', '#060691', lat, lng, summary);
+				unarmedCount++;
 			}
 
-			if (data[i].armed == true) {
-				var circle = L.circle([lat, lng], 500, {
-	    		color: 'red',
-	    		fillColor: '#f03',
-	    		fillOpacity: 0.5
-				}).bindPopup(summary);
-				armed.addLayer(circle);
-			} else {
-				var circle = L.circle([lat, lng], 500, {
-	    		color: 'blue',
-	    		fillColor: '#060691',
-	    		fillOpacity: 0.5
-				}).bindPopup(summary);
-				unarmed.addLayer(circle);
+			if (data[i].outcome == "Killed") {
+				killCount++;
 			}
 		}
+		var notKillCount = data.length - killCount;
+
+		var armKilled = armedCount * 100;
+		var armedNotKilled = 100 - armKilled;
+		var unarmedKilled = killCount / unarmedCount * 100;
+		var unarmedNotKilled = 100 - unarmedKilled;
+
+		console.log(killCount)
+		console.log(notKillCount)
+		console.log(armedCount)
+		console.log(unarmedCount)
+
+		console.log(armKilled)
+		console.log(unarmedKilled)
+		console.log(armedNotKilled)
+		console.log(unarmedNotKilled)
 
 		var myLayerGroups = {
 			"Armed": armed,
 			"Unarmed": unarmed
 		};
 
+
 L.control.layers(null, myLayerGroups).addTo(map);
 }
+function circlePoint(group, color, fillcolor, lat, lng, summary) {
+				var circle = L.circle([lat, lng], 500, {
+	    		color: color,
+	    		fillColor: fillcolor,
+	    		fillOpacity: 0.5
+				}).bindPopup(summary);
+				group.addLayer(circle);
+}
+
 $.getJSON('data/data.min.json').then(loadData);
