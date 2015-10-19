@@ -61,10 +61,11 @@ var loadData = function(data) {
 			"Unarmed": unarmed
 		};
 
-
 map.on('layeradd', function() {
+	if (map.hasLayer(armed)) {
      $('#killed').text("Hello world!");
      $('#notkilled').text("Bye world!");
+ }
  });
 
 map.on('layerremove', function() {
