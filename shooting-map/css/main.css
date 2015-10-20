@@ -1,13 +1,33 @@
-/* add your CSS rules here */
+/*Vichit Mike Sitthideth
+INFO 343*/
+
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css);
+
+/*Sets the size of the map*/
 #map-container {
 	height: 400px;
-	width: 400px;
+	width: 700px;
 }
 
-#footer {
-	border-top: 3px solid #d87e28;
-	background-color: #0F4B82;
-	font-family: "Comic Sans MS";
-	font-size: 18px;
-	color: #61AFAF;
+/*Sets attributes for the heading information*/
+#information {
+	background-color: black;
+	height: 160px;
+	width: 700px;
+	color: white;
+}
+
+/*Sets attributes for bottom stats*/
+#stats {
+	background-color: black;
+	color: white;
+	width: 700px;
+}
+
+.red {
+	color: red;
+}
+
+.blue {
+	color: blue;
 }

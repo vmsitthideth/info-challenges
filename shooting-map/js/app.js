@@ -1,22 +1,28 @@
-/* add your script methods and logic here */
+// Vichit Mike Sitthideth
+// INFO 343
+// JS file for loading map with points and data
 
 'use strict';
 
-var map = L.map('map-container').setView([40, -98], 4);
+//
+$(document).ready(function() {
+	// Zooms in map to United States
+	var map = L.map('map-container').setView([40, -98], 4);
 
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'vmsitthideth.cift34hz40expunlyjqu0v7w5',
-    accessToken: 'pk.eyJ1Ijoidm1zaXR0aGlkZXRoIiwiYSI6ImNpZnQzNGo2cTF1cmNsZmtydW9jcXgzM2kifQ.EEy4Ds0HBQKV1QITP9X1qA'
-}).addTo(map);
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+	    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+	    maxZoom: 18,
+	    id: 'vmsitthideth.cift34hz40expunlyjqu0v7w5',
+	    accessToken: 'pk.eyJ1Ijoidm1zaXR0aGlkZXRoIiwiYSI6ImNpZnQzNGo2cTF1cmNsZmtydW9jcXgzM2kifQ.EEy4Ds0HBQKV1QITP9X1qA'
+	}).addTo(map);
 
-var loadData = function(data) {
+
+	// Function to load data
+	var loadData = function(data) {
 		var armed = L.layerGroup([]);
 		var unarmed = L.layerGroup([]);
-		var killCount = 0;
-		var armedCount = 0;
-		var unarmedCount = 0;
+		var armedKillCount = 0;
+		var unarmedKillCount = 0;
 		for (var i = 0; i < data.length; i++) {
 			var lat = data[i].lat;
 			var lng = data[i].lng;
@@ -28,63 +34,68 @@ var loadData = function(data) {
 
 			if (data[i].armed === true) {
 				circlePoint(armed, 'red', '#f03', lat, lng, summary);
-				armedCount++;
+				if (data[i].outcome == "Killed") {
+					armedKillCount++;
+				}
 			} else {
 				circlePoint(unarmed, 'blue', '#060691', lat, lng, summary);
-				unarmedCount++;
-			}
-
-			if (data[i].outcome == "Killed") {
-				killCount++;
+				if (data[i].outcome == "Killed") {
+				unarmedKillCount++;
+				}
 			}
 		}
 
-		var notKillCount = data.length - killCount;
-
-		var armKilled = armedCount * 100;
-		var armedNotKilled = 100 - armKilled;
-		var unarmedKilled = killCount / unarmedCount * 100;
-		var unarmedNotKilled = 100 - unarmedKilled;
-
-		console.log(killCount)
-		console.log(notKillCount)
-		console.log(armedCount)
-		console.log(unarmedCount)
-
-		console.log(armKilled)
-		console.log(unarmedKilled)
-		console.log(armedNotKilled)
-		console.log(unarmedNotKilled)
+		var armKillPercent = Math.round(armedKillCount / data.length * 100);
+		var armNotKillPercent = 100 - armKillPercent;
+		var unarmedKillPercent = Math.round(unarmedKillCount / data.length * 100);
+		var unarmedNotKillPercent = 100 - unarmedKillPercent;
+		var totalKilled = Math.round((armedKillCount + unarmedKillCount) / data.length * 100);
+		var totalNotKilled = 100 - totalKilled;
 
 		var myLayerGroups = {
 			"Armed": armed,
 			"Unarmed": unarmed
 		};
 
-map.on('layeradd', function() {
-	if (map.hasLayer(armed)) {
-     $('#killed').text("Hello world!");
-     $('#notkilled').text("Bye world!");
- }
- });
+		//  When an event happens (toggle on categories), shows the percentage killed/not killed
+		map.on('layeradd', function() {
+			if (map.hasLayer(armed) && map.hasLayer(unarmed)) {
+	    		$('#killed').text(totalKilled);
+	    		$('#notkilled').text(totalNotKilled);
+	 		} else if (!map.hasLayer(unarmed) && map.hasLayer(armed)) {
+	 	    	$('#killed').text(armKillPercent);
+	    		$('#notkilled').text(armNotKillPercent);
+	 		} else if (!map.hasLayer(armed) && map.hasLayer(unarmed)) {
+	 			$('#killed').text(unarmedKillPercent);
+	    		$('#notkilled').text(unarmedNotKillPercent);
+	 		}
+	 	});
 
-map.on('layerremove', function() {
-	$('#killed').text(" ");
-	$('#notkilled').text(" ");
+		//	When an event happens (toggle off categories), shows the percentage killed/not killed
+		map.on('layerremove', function() {
+			if (!map.hasLayer(armed) && !map.hasLayer(unarmed)) {
+				$('#killed').text("No Data");
+				$('#notkilled').text("No Data");
+			} else if (!map.hasLayer(armed) && map.hasLayer(unarmed)) {
+				$('#killed').text(unarmedKillPercent);
+				$('#notkilled').text(unarmedNotKillPercent);
+			} else if (!map.hasLayer(unarmed) && map.hasLayer(armed)) {
+				$('#killed').text(armKillPercent);
+				$('#notkilled').text(armNotKillPercent);
+			} 
+		}); 
+		L.control.layers(null, myLayerGroups).addTo(map);
+	}
+	$.getJSON('data/data.min.json').then(loadData);
 });
 
-L.control.layers(null, myLayerGroups).addTo(map);
 
-}
-
+//	Function creates circle markers and adds to layer groups
 function circlePoint(group, color, fillcolor, lat, lng, summary) {
-				var circle = L.circle([lat, lng], 500, {
-	    		color: color,
-	    		fillColor: fillcolor,
-	    		fillOpacity: 0.5
-				}).bindPopup(summary);
-
-				group.addLayer(circle);
+	var circle = L.circle([lat, lng], 500, {
+		color: color,
+	    fillColor: fillcolor,
+	    fillOpacity: 0.5
+		}).bindPopup(summary);
+		group.addLayer(circle);
 }
-
-$.getJSON('data/data.min.json').then(loadData);
