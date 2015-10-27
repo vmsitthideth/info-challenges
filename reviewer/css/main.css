@@ -4,12 +4,15 @@
 body {
 	background-image: url("../img/rbbc1.jpg");
 	color: white;
-	font-weight: bold;
 }
 
 iframe {
 	width: 160px;
 	height: 95px;
+}
+
+#description {
+	font-weight: bold;
 }
 
 .star {
@@ -70,7 +73,7 @@ iframe {
 	}
 
 	body {
-		font-size: 20px;
+		font-size: 18px;
 	}
 
 	.star {

@@ -8,12 +8,16 @@ $(document).ready(function() {
 	var Review = Parse.Object.extend('Review');
 	var myReview = new Review();
 
+	$('.averageStar').raty({
+	});
+
 	$('.star').raty({	
 	});
 
 
-	$('#myForm').submit(function() {
-		
+	$('#myForm').submit(function(event) {
+		event.preventDefault();
+		console.log("raklfksd");
 		var rating = $('.star').raty('score');
 		var title = $('#title').val();
 		var review = $('#review').val();	
@@ -22,5 +26,15 @@ $(document).ready(function() {
 		myReview.set('title', title);
 		myReview.set('review', review);
 		myReview.save();
+
+		// myReview.save({
+		// 	Title: $('#title').val(),
+		// 	Review: $('#review').val(),
+		// 	Rating: $('.star').raty('score')
+		// });
 	});
+
+	$('#submittedTitle').text("Place Holder for Reviews");
+	$('#submittedScore').text("Place Holder for Reviews");
+	$('#submittedDescription').text("Place Holder for Reviews");
 });
