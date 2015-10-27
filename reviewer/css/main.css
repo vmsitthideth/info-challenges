@@ -2,12 +2,18 @@
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
 
 body {
-	background-color: black;
+	background-image: url("../img/rbbc1.jpg");
 	color: white;
+	font-weight: bold;
+}
+
+iframe {
+	width: 160px;
+	height: 95px;
 }
 
 .star {
-	color: blue;
+	color: yellow;
 	font-size: 20px;
 }
 
@@ -25,8 +31,49 @@ body {
 	color: black;
 }
 
-#button {
-	color: blue;
+#submit {
+	color: yellow;
 	background-color: gray;
 	border-color: #d3d3d3;
+}
+
+.container {
+	background-color: rgba(0,0,0,0.5);
+}
+
+@media screen and (min-width: 627px) {
+	iframe {
+		width: 280px;
+		height: 155px;
+	}
+}
+
+@media screen and (min-width: 800px) {
+	iframe {
+		width: 360px;
+		height: 235px;
+	}
+
+	body {
+		font-size: 15px;
+	}
+
+	.star {
+		font-size: 30px;
+	}
+}
+
+@media screen and (min-width: 1160px) {
+	iframe {
+		width: 540px;
+		height: 295px;
+	}
+
+	body {
+		font-size: 20px;
+	}
+
+	.star {
+		font-size: 40px;
+	}
 }
