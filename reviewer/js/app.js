@@ -44,9 +44,10 @@ $(document).ready(function() {
 				var newTitle = data.get('title');
 				var newReview = data.get('review');
 				var newRating = data.get('rating');
-				var userReview = '<br>' + newTitle + '<br>' + newRating + '<br>' + newReview + '<br>';
+				var userReview = '<div class="eachReview"><h2>' + newTitle + '</h2>' + '<p>' + newRating + '<br>' + newReview + '</p> </div> <br>';
 				
 				$('#submittedReview').append(userReview);
+				//$('h2').append(newTitle);
 			})
 		}
 	})

@@ -3,6 +3,7 @@
 
 body {
 	background-image: url("../img/rbbc1.jpg");
+	background-repeat: no-repeat;
 	color: white;
 }
 
@@ -44,6 +45,9 @@ iframe {
 	background-color: rgba(0,0,0,0.5);
 }
 
+.eachReview {
+	border-style: inset;
+}
 @media screen and (min-width: 627px) {
 	iframe {
 		width: 280px;
