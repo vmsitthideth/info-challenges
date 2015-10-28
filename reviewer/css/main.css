@@ -47,6 +47,19 @@ iframe {
 .section {
 	border-style: inset;
 }
+
+#votes {
+	text-align: right;
+}
+
+.section .btn-post {
+	background-color: rgba(0,0,0,0.5);
+}
+
+.section .btn-vote {
+	float: right;
+}
+
 @media screen and (min-width: 627px) {
 	iframe {
 		width: 280px;
