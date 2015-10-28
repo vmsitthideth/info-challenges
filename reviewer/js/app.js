@@ -31,6 +31,9 @@ $(document).ready(function() {
 		myReview.set('upVote', upVote);
 		myReview.set('downVote', downVote);
 		myReview.save();
+
+		location.reload();
+		return false;
 	});
 
 	//  Loops through each ID, pulls categories, and displays each category
@@ -55,9 +58,9 @@ $(document).ready(function() {
 				var useful = "<p id ='votes'>" + helpful + " out of " + voteTotal + " people agree</p>";
 
 				var section = $("<div class='section'></div>");
-				var erase = "<button type='button' class='btn-post'><i class='fa fa-eraser'></i></button>";
-				var thumbUp = "<button type='button' class='btn-post btn-vote'><i class='fa fa-thumbs-up'></i></button>";
-				var thumbDown = "<button type='button' class='btn-post btn-vote'><i class='fa fa-thumbs-down'></i></button>";
+				var erase = "<button type='button' class='btn-default erase'><i class='fa fa-eraser'></i></button>";
+				var thumbUp = "<button type='button' class='btn-default btn-vote thumbUp'><i class='fa fa-thumbs-up'></i></button>";
+				var thumbDown = "<button type='button' class='btn-default btn-vote thumbDown'><i class='fa fa-thumbs-down'></i></button>";
 
 				$('#submittedReview').append(section);
 				$(section).append(thumbDown + thumbUp);
@@ -76,7 +79,7 @@ $(document).ready(function() {
 	})
 
 	//  Deletes a review
-	$(document).on('click', 'btn-post', function() {
+	$(document).on('click', '.erase', function() {
 		var parent = $(this).parent();
 		var id = $(parent).attr("id");
 		var query = new Parse.Query(Review);
