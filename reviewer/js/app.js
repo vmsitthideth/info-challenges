@@ -15,7 +15,13 @@ $(document).ready(function() {
 	$('.star').raty({	
 	});
 
+	$('.userRating').raty({
+  score: function() {
+    return $(this).attr('data-score');
+  }
+});
 
+	//	Function that sends given values to Parse
 	$('#myForm').submit(function(event) {
 		event.preventDefault();
 
@@ -30,24 +36,23 @@ $(document).ready(function() {
 		myReview.set('title', title);
 		myReview.set('review', review);
 		myReview.save();
-
-		// myReview.save({
-		// 	Title: $('#title').val(),
-		// 	Review: $('#review').val(),
-		// 	Rating: $('.star').raty('score')
-		// });
 	});
 
 	query.find({
 		success: function(results) {
 			results.forEach(function(data) {
-				var newTitle = data.get('title');
+				var newTitle = "<h2>" + data.get('title') + "</h2>";
 				var newReview = data.get('review');
-				var newRating = data.get('rating');
-				var userReview = '<div class="eachReview"><h2>' + newTitle + '</h2>' + '<p>' + newRating + '<br>' + newReview + '</p> </div> <br>';
-				
-				$('#submittedReview').append(userReview);
-				//$('h2').append(newTitle);
+				var newRating = $("<div></div>").raty({
+						readOnly: true,
+						score: data.get('rating')
+					});
+				var userReview = "<div id='" + data.id + "'>" + newTitle + '<br>' + '<p>' + newReview + '</p></div>';
+
+				var section = $("<div class='section'></div>");
+				$('#submittedReview').append(section);
+				$(section).append(newRating);
+				$(section).append("<div id='userReview'>" + userReview + "</div>");
 			})
 		}
 	})
