@@ -4,14 +4,9 @@
 $(document).ready(function() {
 
 	Parse.initialize("2qfsOTARU0KQTMTfqqVvaSuCxmB1sqEuDWbKQGee", "9zkkgo0emUFr2RZaqzm7UWbyiecdENYehaeTF427");
-
 	var Review = Parse.Object.extend('Review');
 	var myReview = new Review();
 	var query = new Parse.Query(Review);
-
-	$('.averageStar').raty({
-		readOnly: true
-	});
 
 	$('.star').raty({	
 	});
@@ -78,7 +73,7 @@ $(document).ready(function() {
 		}
 	})
 
-	//  Deletes a review
+	//  Function that enables the deletion of a review upon clicking the delete icon
 	$(document).on('click', '.erase', function() {
 		var parent = $(this).parent();
 		var id = $(parent).attr("id");
@@ -87,7 +82,7 @@ $(document).ready(function() {
 		query.find({
 			success: function(results) {
 				results.forEach(function(data) {
-					
+					console.log(data);
 					data.destroy();
 					data.save();
 					location.reload();
@@ -97,6 +92,49 @@ $(document).ready(function() {
 				alert("Error: " + error.code + " " + error.message);
 			}
 		})
+	})
 
+	//  Function that allows for thumbs up rating
+	$(document).on('click', '.thumbUp', function() {
+		var parent = $(this).parent();
+		var id = $(parent).attr("id");
+		var query = new Parse.Query(Review);
+		query.equalTo("objectID", id);
+		query.find({
+			success: function(results) {
+				results.forEach(function(data) {
+					console.log(data.upVote);
+					data.increment('upVote');
+					console.log(data.upVote);
+					data.save();
+					location.reload();
+				})
+			},
+			error: function(error) {
+				alert("Error: " + error.code + " " + error.message);
+			}
+		})
+	})
+
+	//  Function that allows for thumbs down rating
+	$(document).on('click', '.thumbDown', function() {
+		var parent = $(this).parent();
+		var id = $(parent).attr("id");
+		var query = new Parse.Query(Review);
+		query.equalTo("objectID", id);
+		query.find({
+			success: function(results) {
+				results.forEach(function(data) {
+					console.log(data.downVote);
+					data.increment('downVote');
+					console.log(data.downvote);
+					data.save();
+					location.reload();
+				})
+			},
+			error: function(error) {
+				alert("Error: " + error.code + " " + error.message);
+			}
+		})
 	})
 });
