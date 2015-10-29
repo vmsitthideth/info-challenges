@@ -82,7 +82,7 @@ $(document).ready(function() {
 
 	//  Function that enables the deletion of a review upon clicking the delete icon
 	$(document).on('click', '.erase', function() {
-		var parent = $('this').parent();
+		var parent = $(this).parent();
 		var id = $(parent).attr("id");
 		var query = new Parse.Query(Review);
 		query.equalTo("objectID", id);
@@ -103,7 +103,7 @@ $(document).ready(function() {
 
 	//  Function that allows for thumbs up rating
 	$(document).on('click', '.thumbUp', function() {
-		var parent = $('this').parent();
+		var parent = $(this).parent();
 		var id = $(parent).attr("id");
 		var query = new Parse.Query(Review);
 		query.equalTo("objectID", id);
@@ -125,7 +125,7 @@ $(document).ready(function() {
 
 	//  Function that allows for thumbs down rating
 	$(document).on('click', '.thumbDown', function() {
-		var parent = $('this').parent();
+		var parent = $(this).parent();
 		var id = $(parent).attr("id");
 		var query = new Parse.Query(Review);
 		query.equalTo("objectID", id);
