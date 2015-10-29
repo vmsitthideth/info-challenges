@@ -89,7 +89,6 @@ $(document).ready(function() {
 		query.find({
 			success: function(results) {
 				results.forEach(function(data) {
-					console.log(data);
 					data.destroy();
 					data.save();
 					location.reload();
@@ -110,9 +109,7 @@ $(document).ready(function() {
 		query.find({
 			success: function(results) {
 				results.forEach(function(data) {
-					console.log(data.upVote);
 					data.increment('upVote');
-					console.log(data.upVote);
 					data.save();
 					location.reload();
 				})
@@ -132,9 +129,7 @@ $(document).ready(function() {
 		query.find({
 			success: function(results) {
 				results.forEach(function(data) {
-					console.log(data.downVote);
-					data.increment('downVote');
-					console.log(data.downvote);
+					data.increment('downVote');		
 					data.save();
 					location.reload();
 				})
