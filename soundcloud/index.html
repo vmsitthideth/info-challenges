@@ -23,21 +23,23 @@
       <div class="form-group">
         <label>SoundCloud search:</label>
         <!-- bind the search term to the controller -->
-        <input name="search" placeholder="Search for a track..." ng-model="query" class="form-control"></input>
-      </div>
-      <div class="form-group">
-        <!-- call method on click -->
-        <button class="btn btn-primary" ng-click="getTracks()" type="submit">Submit</button>
+        <input name="search" placeholder="Search for a track..." ng-model="query" ng-keyup="getTracks()" class="form-control"></input>
       </div>
     </form>     
 
-    <div ng-if="tracks"> <!-- only show results if we've done a search -->
-      <p>Tracks found:</p>
-      <ul>
-        <li ng-repeat="track in tracks"><i>{{track.title}}</i> by {{track.user.username}}</li>
-      </ul>
+    <div class="row">
+        <div ng-if="tracks"> <!-- only show results if we've done a search -->
+          <p>Tracks found:</p>
+          <ul>
+            <li ng-repeat="track in tracks">
+              <div class="col-md-2"><img src="{{track.artwork_url}}">
+              </div>
+              <div class="col-md-12"><i>{{track.title}}</i> by {{track.user.username}} <br>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div> <!-- end container -->
     </div>
-
-  </div> <!-- end container -->
 </body>
 </html>
