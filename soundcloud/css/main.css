@@ -3,7 +3,8 @@
 
 body {
   padding: 10px;
-  background-image: url("../img/vinyl.png");
+  background: url("../img/vinyl.png") no-repeat center center fixed;
+  background-size: cover;
   color: white;
 }
 
