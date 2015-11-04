@@ -1,6 +1,7 @@
 /*Vichit Mike Sitthideth*/
 /*INFO 343B*/
 
+/*Default body settings and stretches background image to fill page always*/
 body {
   padding: 10px;
   background: url("../img/vinyl.png") no-repeat center center fixed;
