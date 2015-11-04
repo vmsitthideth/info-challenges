@@ -1,6 +1,9 @@
+/*Vichit Mike Sitthideth*/
+/*INFO 343B*/
+
 body {
-  padding:10px;
-  background-color: black;
+  padding: 10px;
+  background-image: url("../img/vinyl.png");
   color: white;
 }
 
@@ -11,3 +14,33 @@ ul {
 #searchBar {
 	width: 50%;
 }
+
+#minError {
+	color: red;
+}
+
+.container {
+	background-color: rgba(0,0,0,0.5);
+}
+
+.header h1 {
+	font-family: "Times New Roman", Calibri;
+}
+
+/* removes underline on href*/
+#notAvailable:hover {
+	text-decoration: none;
+}
+
+/* Shrinks sizing to fit below 700px size screens*/
+	@media screen and (max-width: 700px) {
+		body {
+			font-size: 10px;
+		}
+		h1 {
+			font-size: 12px;
+		}
+		.btn {
+			font-size: 10px;
+		}
+	}

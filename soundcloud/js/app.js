@@ -1,3 +1,6 @@
+// Vichit Mike Sitthideth
+// INFO 343 B
+
 'use strict';
 
 var BASE_URL = 'https://api.soundcloud.com'; //website we fetch information from

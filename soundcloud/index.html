@@ -1,3 +1,6 @@
+<!-- Vichit Mike Sitthideth -->
+<!-- INFO 343B -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <title>SoundCloud Example</title>
+  <title>Welcome to the MUSIC-FINDER</title>
   
   <!-- bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
@@ -14,64 +17,54 @@
   <!-- include libraries -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <script src="js/app.js"></script>
-  <script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script>
 
 </head>
 <body>
 
-<!-- Soundcloud Widget -->
-<iframe id="sc-widget" src="https://w.soundcloud.com/player/?url=http://api.soundcloud.com/users/1539950/favorites" width="100%" height="465" scrolling="no" frameborder="no"></iframe>
-<script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script>
-<script type="text/javascript">
-  (function(){
-    var widgetIframe = document.getElementById('sc-widget'),
-        widget       = SC.Widget(widgetIframe);
-
-    widget.bind(SC.Widget.Events.READY, function() {
-      widget.bind(SC.Widget.Events.PLAY, function() {
-        // get information about currently playing sound
-        widget.getCurrentSound(function(currentSound) {
-          console.log('sound ' + currentSound.get('') + 'began to play');
-        });
-      });
-      // get current level of volume
-      widget.getVolume(function(volume) {
-        console.log('current volume value is ' + volume);
-      });
-      // set new volume level
-      widget.setVolume(50);
-      // get the value of the current position
-    });
-
-  }());
-</script>
-
   <div class="container text-left" ng-app="myApp" ng-controller="MyCtrl"> <!-- specify app -->
+    <div class="header text-center"> 
+      <h1>MUSIC-FINDER:
+      </h1> 
+        <p>Your One Stop To Finding The Song You Love!
+        </p> 
+    </div>
 
+    <!-- This section is the search bar for looking through SoundCloud for a song/artist -->
     <form name="trackForm">
       <div class="form-group">
-        <label>SoundCloud search:</label>
+        <label>Search SoundCloud:</label>
+
         <!-- bind the search term to the controller -->
-        <input name="search" id="searchBar" placeholder="Search for a track..." ng-model="query" ng-keyup="getTracks()"ng-model-options="{debounce:100}" class="form-control"></input>
+        <!-- Places a minimum of 4 character requirement to show search results -->
+        <input name="search" id="searchBar" placeholder="Search for a track..." ng-model="query" ng-keyup="getTracks()" class="form-control" ng-minlength="4" required></input><div id="minError" ng-show="trackForm.search.$error.minlength">Please Input a Minimum of 4 characters...</div>
       </div>
     </form>     
 
-        <table class="table">
-          <tr>
-            <th>Artwork</th>
-            <th>Track Name</th>
-            <th>Uploaded By</th>
-            <th>Add To Playlist</th>
-          </tr>
-        <div ng-if="tracks"> <!-- only show results if we've done a search -->
-            <tr ng-repeat="track in tracks">
-              <td><img src="{{track.artwork_url}}"></td>
-              <td><i><a href="{{track.permalink_url}}">{{track.title}}</i></td>
+    <!-- Search table shows only if the form is filled correctly -->
+    <table class="table" ng-if="trackForm.$valid">
 
-              <td><a href="{{track.user.username}}">{{track.user.username}}</a></td> 
-              <td><button class="btn btn-primary" type="submit">Add to Playlist</button>
-              </div>
-            </tr>
-      </div> <!-- end container -->
+    <!-- Categories that can be sorted when clicked -->
+      <tr>
+        <th><a href="" ng-click="sortBy = 'artwork_url'">Artwork</a></th>
+        <th><a href="" ng-click="sortBy = 'title'">Track Name</a></th>
+        <th><a href="" ng-click="sortBy = 'user.username'">Uploaded By</a></th>
+        <th><a href="" ng-click="sortBy = 'genre'">Genre</a></th>
+        <th><a href="">Purchase Track</a></th>
+      </tr>
+      
+      <!-- Data from SoundCloud that will be displayed -->
+        <tr ng-repeat="track in tracks | orderBy: sortBy">
+          <td>
+            <p ng-if="track.artwork_url == null">NO ARTWORK</p>
+            <img src="{{track.artwork_url}}">
+          </td>
+          <td><i><a href="{{track.permalink_url}}">{{track.title}}</i></td>
+          <td><a href="{{track.user.permalink_url}}">{{track.user.username}}</a></td> 
+          <td><button class="btn btn-primary genre" type="text">{{track.genre}}</button></td>
+          <td>
+            <a ng-show="track.purchase_url != null" href="{{track.purchase_url}}">BUY TRACK</a>
+            <a id="notAvailable" ng-show="track.purchase_url == null">Unavailable</a>
+          </td>
+        </tr>
 </body>
 </html>
