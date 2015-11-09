@@ -9,16 +9,16 @@ angular.module('DawgCoffeeApp', ['ngSanitize', 'ui.router', 'ui.bootstrap'])
 	$stateProvider
 		.state('home', {
 			url: '/',
-			templateURL: 'partials/home.html',
+			templateUrl: 'partials/home.html'
 		})
 		.state('order', {
 			url: '/orders',
-			templateURL: 'partials/orders.html',
+			templateUrl: 'partials/orders.html',
 			controller: 'OrderCtrl'
 		})
 		.state('bean', {
 			url: '/orders/bean-{id}',
-			templateURL: 'partials/bean.html',
+			templateUrl: 'partials/bean.html',
 			controller: 'BeanCtrl'
 		})
 		// .state('cart', {
@@ -45,6 +45,19 @@ angular.module('DawgCoffeeApp', ['ngSanitize', 'ui.router', 'ui.bootstrap'])
 	});
 }])
 
-.controller('CartCtrl', ['$scope', '$http', '$uibModal', function($scope, $http, $uibModal) {
+// .controller('CartCtrl', ['$scope', '$http', '$uibModal', function($scope, $http, $uibModal) {
+// 	$scope.cart = 
+// }])
 
-}])
+
+// service for cart list
+// .factory('cart', function() {
+// 	var service = {};
+// 	service.cart = [];
+
+// 	service.saveCart = function(product) {
+// 		service.cart.push(product);
+// 	};
+
+// 	return service;
+// })
