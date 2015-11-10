@@ -13,12 +13,14 @@
 <div class="Order-Headline">
 	<div class="container">
     <form name="beanForm">
-      <div class="form-group">
+      <div class="form">
         <label>Find Your Bean:</label>
 
         <!-- bind the search term to the controller -->
-        <!-- Places a minimum of 4 character requirement to show search results -->
-        <input name="search" id="searchBar" placeholder="Search for a bean..." ng-model="query" ng-keyup="getProduct()" class="form-control" ng-minlength="3" required></input><div id="minError" ng-show="beanForm.search.$error.minlength">Please Input a Minimum of 3 characters...</div>
+        <div class="form-inline pull-right">
+          <label for="search"><i class="fa fa-search"></i></label>
+          <input name="query" placeholder="Search" id="search" ng-model="searchQuery" ng-minlength="3" required></input><div id="minError" ng-show="beanForm.search.$error.minlength">Please Input a Minimum of 3 characters...</div>
+        </div>
       </div>
     </form> 
 	</div>

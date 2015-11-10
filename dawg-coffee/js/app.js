@@ -32,17 +32,13 @@ angular.module('DawgCoffeeApp', ['ngSanitize', 'ui.router', 'ui.bootstrap'])
 })
 
 .controller('OrderCtrl', ['$scope', '$http', '$uibModal', function($scope, $http, $uibModal) {
-	$scope.getProduct = function() {
-		var request = $scope.query;
 		$http.get('data/products.json').then(function(response) {
 			$scope.products = response.data;
-		});
-	};
-	
+		});	
 
 }])
 
-.controller('BeanCtrl', ['$scope', '$http', '$stateParams', '$filter', '$uibModal', function($scope, $http, $uibModal, $stateParams, $filter) {
+.controller('BeanCtrl', ['$scope', '$http', '$stateParams', '$filter', function($scope, $http, $stateParams, $filter) {
 	$http.get('data/products.json').then(function(response) {
 	   	$scope.product = $filter('filter')(response.data, { 
 	      id: $stateParams.id 
