@@ -1,2 +1,36 @@
+<!-- The bean details page goes here -->
+<!DOCTYPE html>
+<div class="header">
+	<div class="container">
+		<h1> Dawg Coffee<br>Orders
+		</h1>
+		<div id="motto">
+			<p>Supplying Beans to Sleepy Huskie since 2015</p>
+		</div>
+	</div>
+</div>
+
 <div class="container">
+    <table class="table">
+
+    <!-- Categories that can be sorted when clicked -->
+      <tr>
+        <th><a href="" ng-click="sortBy = 'product.name'">Name</a></th>
+        <th><a href="" ng-click="sortBy = 'product.description'">Description</a></th>
+        <th><a href="" ng-click="sortBy = 'product.image'">Bean</a></th>
+      </tr>
+      
+      <!-- Data from product that will be displayed -->
+          <td>{{product.name}}</td>
+          <td>{{product.description}}</td> 
+          <td><img src="{{product.image}}"></td>
+        </tr>
+</div>
+
+<div class="container">
+	<h1>About Grower:</h1>
+	<h2>{{product.grower.name}}</h2>
+	<p>{{product.grower.description}}</p>
+	<img src="{{product.grower.image}}">
+	<a href="{{product.grower.externalUrl}}"></a>
 </div>

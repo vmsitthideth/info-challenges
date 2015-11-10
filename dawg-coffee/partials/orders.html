@@ -12,7 +12,33 @@
 
 <div class="Order-Headline">
 	<div class="container">
-		<p>coming soon...
-		</p>
+    <form name="beanForm">
+      <div class="form-group">
+        <label>Find Your Bean:</label>
+
+        <!-- bind the search term to the controller -->
+        <!-- Places a minimum of 4 character requirement to show search results -->
+        <input name="search" id="searchBar" placeholder="Search for a bean..." ng-model="query" ng-keyup="getProduct()" class="form-control" ng-minlength="3" required></input><div id="minError" ng-show="beanForm.search.$error.minlength">Please Input a Minimum of 3 characters...</div>
+      </div>
+    </form> 
 	</div>
 </div>
+
+    <table class="table" ng-if="beanForm.$valid">
+
+    <!-- Categories that can be sorted when clicked -->
+      <tr>
+        <th><a href="" ng-click="sortBy = 'name'">Name</a></th>
+        <th><a href="" ng-click="sortBy = 'description'">Description</a></th>
+        <th><a href="" ng-click="sortBy = 'price'">Price</a></th>
+        <th><a href="" ng-click="sortBy = 'details'">Details</a></th>
+
+      </tr>
+      
+      <!-- Data from products json file that will be displayed -->
+        <tr ng-repeat="product in products | orderBy: 'name'">
+          <td>{{product.name}}</td>
+          <td>{{product.description}}</td> 
+          <td>{{product.price | currency:"$"}}</td>
+          <td><a ui-sref="bean({id: product.id})">Click Here!</a></td>
+        </tr>
