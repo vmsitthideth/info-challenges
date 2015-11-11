@@ -19,26 +19,26 @@
         <!-- bind the search term to the controller -->
         <div class="form-inline pull-right">
           <label for="search"><i class="fa fa-search"></i></label>
-          <input name="query" placeholder="Search" id="search" ng-model="searchQuery" ng-minlength="3" required></input><div id="minError" ng-show="beanForm.search.$error.minlength">Please Input a Minimum of 3 characters...</div>
+          <input name="query" placeholder="Search" id="search" ng-model="searchQuery"></input>
         </div>
       </div>
     </form> 
 	</div>
 </div>
 
-    <table class="table" ng-if="beanForm.$valid">
+    <table class="table">
 
     <!-- Categories that can be sorted when clicked -->
       <tr>
-        <th><a href="" ng-click="sortBy = 'name'">Name</a></th>
-        <th><a href="" ng-click="sortBy = 'description'">Description</a></th>
-        <th><a href="" ng-click="sortBy = 'price'">Price</a></th>
-        <th><a href="" ng-click="sortBy = 'details'">Details</a></th>
+        <th><a href="" >Name</a></th>
+        <th><a href="" >Description</a></th>
+        <th><a href="" >Price</a></th>
+        <th><a href="" >Details</a></th>
 
       </tr>
       
       <!-- Data from products json file that will be displayed -->
-        <tr ng-repeat="product in products | orderBy: 'name'">
+        <tr ng-repeat="product in products | orderBy: 'name' | filter: searchQuery">
           <td>{{product.name}}</td>
           <td>{{product.description}}</td> 
           <td>{{product.price | currency:"$"}}</td>

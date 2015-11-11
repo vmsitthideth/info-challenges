@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <div class="header">
 	<div class="container">
-		<h1> Dawg Coffee<br>Orders
+		<h1> Dawg Coffee<br>Product Details
 		</h1>
 		<div id="motto">
 			<p>Supplying Beans to Sleepy Huskie since 2015</p>
@@ -10,7 +10,18 @@
 	</div>
 </div>
 
+
 <div class="container">
+	<h1>About Grower:</h1>
+	<img id="growerPic" src="{{product.grower.image}}">
+	<h2>{{product.grower.name}}</h2>
+	<p>{{product.grower.description}}</p>
+	<br>
+	<a href="{{product.grower.externalUrl}}">{{product.grower.externalUrl}}</a>
+	<br>
+</div>
+
+<div class="container beanTable">
     <table class="table">
 
     <!-- Categories that can be sorted when clicked -->
@@ -27,10 +38,28 @@
         </tr>
 </div>
 
-<div class="container">
-	<h1>About Grower:</h1>
-	<img id="growerPic" src="{{product.grower.image}}">
-	<h2>{{product.grower.name}}</h2>
-	<p>{{product.grower.description}}</p>
-	<a href="{{product.grower.externalUrl}}"></a>
+<div class="container submitForm">
+	<div ng-controller="FormCtrl">
+		<form name="payForm" class="form-horizontal">
+			<div class="form-group">
+			<br>
+	        	<label>Pounds:
+    				<input type="number" name="input" ng-model="example.value"
+           			min="1" max="10" required>
+				</label>
+				<br>
+    			<label for="singleSelect"> Grind: </label>
+    				<select name="singleSelect" id="singleSelect" ng-model="data.singleSelect">
+      				<option value="">Select Grind</option>
+      				<<option value="{{data.option1}}">Whole Bean</option>
+      				<option value="option-2">Espresso</option>
+      				<option value="option-3">French Press</option>
+      				<option value="option-4">Cone Drip Filter</option>
+      				<option value="option-5">Flat Bottom Filter</option>
+    				</select>
+	      	</div>
+	      <!-- ng-click when click call submitForm() ng-disabled disables button unless form input is valid-->
+	      <button type="submit" class="btn btn-primary" ng-click="addToCart(payForm)" ng-disabled="payForm.$invalid">Add To Cart</button>
+	    </form>
+  	</div> <!-- end form wrapper -->
 </div>

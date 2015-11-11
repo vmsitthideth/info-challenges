@@ -46,19 +46,32 @@ angular.module('DawgCoffeeApp', ['ngSanitize', 'ui.router', 'ui.bootstrap'])
  	});
 }])
 
+.controller('FormCtrl', ['$scope', function($scope) { 
+
+  $scope.addToCart = function(form){
+  	if(form.$valid) {
+  		alert("Payment info has been submitted!");
+  	}
+  	else {
+  		alert("There was an error submitting your payment. Please check that your information is correct.");
+  	}
+  }
+  
+}])
+
 // .controller('CartCtrl', ['$scope', '$http', '$uibModal', function($scope, $http, $uibModal) {
 // 	$scope.cart = 
 // }])
 
 
 // service for cart list
-// .factory('cart', function() {
-// 	var service = {};
-// 	service.cart = [];
+.factory('cart', function() {
+	var service = {};
+	service.cart = [];
 
-// 	service.saveCart = function(product) {
-// 		service.cart.push(product);
-// 	};
+	service.saveCart = function(product) {
+		service.cart.push(product);
+	};
 
-// 	return service;
-// })
+	return service;
+})
