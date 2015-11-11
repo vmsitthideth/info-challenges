@@ -50,6 +50,7 @@ angular.module('DawgCoffeeApp', ['ngSanitize', 'ui.router', 'ui.bootstrap'])
  	$scope.addToCart = function(product) {
  		cart.saveCart(product);
  		cart.saveStorage(product);
+ 		alert("Added To Shopping Cart!");
  	};
 
 }])
