@@ -14,7 +14,6 @@
 	<div class="container">
     <form name="beanForm">
       <div class="form">
-        <label>Find Your Bean:</label>
 
         <!-- bind the search term to the controller -->
         <div class="form-inline pull-right">
@@ -43,4 +42,4 @@
           <td>{{product.description}}</td> 
           <td>{{product.price | currency:"$"}}</td>
           <td><a ui-sref="bean({id: product.id})">Click Here!</a></td>
-        </tr>
+        </tr></table>

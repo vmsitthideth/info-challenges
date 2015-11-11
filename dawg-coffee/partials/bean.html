@@ -12,15 +12,14 @@
 
 
 <div class="container">
-	<h1>About Grower:</h1>
+	<h2>About Grower:</h2>
 	<img id="growerPic" src="{{product.grower.image}}">
 	<h2>{{product.grower.name}}</h2>
 	<p>{{product.grower.description}}</p>
 	<br>
 	<a href="{{product.grower.externalUrl}}">{{product.grower.externalUrl}}</a>
-	<br>
 </div>
-
+<br>
 <div class="container beanTable">
     <table class="table">
 
@@ -32,15 +31,16 @@
       </tr>
       
       <!-- Data from product that will be displayed -->
-          <td>{{product.name}}</td>
-          <td>{{product.description}}</td> 
-          <td><img src="{{product.image}}"></td>
+          <td><br><br><br>{{product.name}}</td>
+          <td><br><br><br>{{product.description}}</td> 
+          <td><img id="productPic" src="{{product.image}}"></td>
         </tr>
+        </table>
 </div>
 
 <div class="container submitForm">
-	<div ng-controller="FormCtrl">
-		<form name="payForm" class="form-horizontal">
+	<div ng-controller="BeanCtrl">
+		<form name="orderForm" class="form-horizontal">
 			<div class="form-group">
 			<br>
 	        	<label>Pounds:
@@ -59,7 +59,7 @@
     				</select>
 	      	</div>
 	      <!-- ng-click when click call submitForm() ng-disabled disables button unless form input is valid-->
-	      <button type="submit" class="btn btn-primary" ng-click="addToCart(payForm)" ng-disabled="payForm.$invalid">Add To Cart</button>
+	      <button type="submit" class="btn btn-primary" ng-click="addToCart(orderForm)" ng-disabled="orderForm.$invalid">Add To Cart</button>
 	    </form>
   	</div> <!-- end form wrapper -->
 </div>
