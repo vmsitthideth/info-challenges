@@ -1,3 +1,6 @@
+<!-- Vichit Mike Sitthideth -->
+<!-- INFO 343B -->
+
 <!-- The bean details page goes here -->
 <!DOCTYPE html>
 <div class="header">
@@ -31,11 +34,12 @@
       </tr>
       
       <!-- Data from product that will be displayed -->
-          <td><br><br><br>{{product.name}}</td>
-          <td><br><br><br>{{product.description}}</td> 
+      <tr>
+          <td>{{product.name}}</td>
+          <td>{{product.description}}</td> 
           <td><img id="productPic" src="{{product.image}}"></td>
-        </tr>
-        </table>
+      </tr>
+     </table>
 </div>
 
 <div class="container submitForm">
@@ -44,22 +48,21 @@
 			<div class="form-group">
 			<br>
 	        	<label>Pounds:
-    				<input type="number" name="input" ng-model="example.value"
+    				<input type="number" ng-model="product.quantity"
            			min="1" max="10" required>
 				</label>
-				<br>
-    			<label for="singleSelect"> Grind: </label>
-    				<select name="singleSelect" id="singleSelect" ng-model="data.singleSelect">
-      				<option value="">Select Grind</option>
-      				<<option value="{{data.option1}}">Whole Bean</option>
-      				<option value="option-2">Espresso</option>
-      				<option value="option-3">French Press</option>
-      				<option value="option-4">Cone Drip Filter</option>
-      				<option value="option-5">Flat Bottom Filter</option>
+			<br>
+    			<label for="grind"> Grind: </label>
+    				<select name="grind" id="grind" ng-model="product.grind">
+      				<<option value="Whole Bean">Whole Bean</option>
+      				<option value="Espresso">Espresso</option>
+      				<option value="French Press">French Press</option>
+      				<option value="Cone Drip Filter">Cone Drip Filter</option>
+      				<option value="Flat Bottom Filter">Flat Bottom Filter</option>
     				</select>
 	      	</div>
 	      <!-- ng-click when click call submitForm() ng-disabled disables button unless form input is valid-->
-	      <button type="submit" class="btn btn-primary" ng-click="addToCart(orderForm)" ng-disabled="orderForm.$invalid">Add To Cart</button>
+	      <button type="submit" class="btn btn-primary" ng-click="addToCart(product)" ng-disabled="orderForm.$invalid">Add To Cart</button>
 	    </form>
   	</div> <!-- end form wrapper -->
 </div>

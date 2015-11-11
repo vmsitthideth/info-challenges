@@ -1,3 +1,6 @@
+<!-- Vichit Mike Sitthideth -->
+<!-- INFO 343B -->
+
 <!-- The order page goes here -->
 <!DOCTYPE html>
 <div class="header">
@@ -25,21 +28,21 @@
 	</div>
 </div>
 
-    <table class="table">
+<table class="table">
 
-    <!-- Categories that can be sorted when clicked -->
-      <tr>
-        <th><a href="" >Name</a></th>
-        <th><a href="" >Description</a></th>
-        <th><a href="" >Price</a></th>
-        <th><a href="" >Details</a></th>
-
-      </tr>
+  <!-- Categories for product -->
+  <tr>
+    <th><a href="" >Name</a></th>
+    <th><a href="" >Description</a></th>
+    <th><a href="" >Price</a></th>
+    <th><a href="" >Details</a></th>
+  </tr>
       
-      <!-- Data from products json file that will be displayed -->
-        <tr ng-repeat="product in products | orderBy: 'name' | filter: searchQuery">
-          <td>{{product.name}}</td>
-          <td>{{product.description}}</td> 
-          <td>{{product.price | currency:"$"}}</td>
-          <td><a ui-sref="bean({id: product.id})">Click Here!</a></td>
-        </tr></table>
+  <!-- Data from products json file that will be displayed -->
+  <tr ng-repeat="product in products | orderBy: 'name' | filter: searchQuery">
+    <td>{{product.name}}</td>
+    <td>{{product.description}}</td> 
+    <td>{{product.price | currency:"$"}}</td>
+    <td><a ui-sref="bean({id: product.id})">Click Here!</a></td>
+  </tr>
+</table>

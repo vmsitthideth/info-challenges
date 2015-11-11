@@ -3,16 +3,16 @@
 *Update!* This folder contains your submission for the [shopping cart challenge](http://info343-joelross.rhcloud.com/challenges/cart). Please answer the below questions with details about your submission for this later challenge.
 
 ##### 1. Did you receive any help from others (classmates, etc)? If so, please list who. #####
-> Answer goes here!
+> Asked a lot of people.  Isabella, Meera, Kevin Ke.
 
 ##### 2. Did you complete any advanced extensions to this challenge? If so, what? #####
-> Answer goes here!
+> No I did not.
 
 ##### 3. Approximately how many hours did it take you to complete this challenge? #####
-> Answer goes here!
+> Took me about 16 hours to get this far.
 
 ##### 4. Did you encounter any problems in this challenge we should warn students about in the future? How can we make the challenge better? #####
-> Answer goes here!
+> More information on where to go in documentation.
 
 
 

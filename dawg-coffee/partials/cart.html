@@ -1,3 +1,6 @@
+<!-- Vichit Mike Sitthideth -->
+<!-- INFO 343B -->
+
 <!DOCTYPE html>
 <div class="header">
 	<div class="container">
@@ -18,19 +21,17 @@
         <th><a href="" >Quanity (lbs)</a></th>
         <th><a href="" >Extended Price</a></th>
       </tr>
-      
+      <tr ng-repeat="bean in myCart">
       <!-- Data from products json file that will be displayed -->
- <!--        <tr > -->
-<!--           <td>{{bean.name}}</td>
+          <td>{{bean.name}}</td>
           <td>{{bean.grind}}</td> 
-          <td>{{product.price | currency:"$"}}</td>
-          <td>{{bean.quantity}}</td> -->
-
-<!--           <td>Captain Ballard's Blend</td>
-          <td>Whole Bean</td> 
-          <td>$19.99</td>
-          <td>10</td>
-          <td>$199.99</td>
+          <td>{{bean.price | currency:"$"}}</td>
+          <td>{{bean.quantity}}</td>
+          <td>{{bean.price * bean.quantity | currency: '$'}}</td>
         </tr>
-        </table> -->
+        </table>
+        <br>
+        <p class="total pull-right">Total Cost: {{totalCost(bean) | currency: '$'}}</p>
+        <br>
+        <button id="submit" class="btn btn-primary" type="submit" ng-click="submit()">Submit Order!</button>
 </section>
