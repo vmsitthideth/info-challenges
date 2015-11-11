@@ -12,7 +12,7 @@
 > Took me about 16 hours to get this far.
 
 ##### 4. Did you encounter any problems in this challenge we should warn students about in the future? How can we make the challenge better? #####
-> More information on where to go in documentation.
+> More information on where to go in documentation.  I went by fine until I got to the cart implementation.  I don't believe it would be possible to actually finish this in a timely manner by myself.  I'd definitely need support from others.  So I could generally see this turned to more of a group project in future classes.
 
 
 
